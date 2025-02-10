@@ -1,0 +1,21 @@
+// initial negative is never eralized; 3, or 3 + 3
+        // outer loop:
+        int total = 0; // 2           // 3
+        for (int i = 0; i < num; i++) {
+            // access the index at i + (a counter that starts at 0)
+            int added = intarr[i] + total; // starts at 1st
+            total = added;
+            // add that to the table..
+            table.put(added, true);
+            //increment counter..
+            // now for each negative value... add it....
+                int negTotal = 0;
+                for (int z = num - 1; z > 0; z--) { // ** sketchy! > 1? >= 0?
+                    int negc = intarr[z] + negTotal;
+                    int toAdd = added + negc; // right?
+                    if (table.get(toAdd) == null) {
+                        table.put(toAdd, true); // add to table...
+                    }
+                    negTotal = negc; // update negtotal...
+                }
+        }
